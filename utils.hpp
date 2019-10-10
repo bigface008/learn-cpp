@@ -24,6 +24,8 @@ void insertion_sort(vector<int> &v);
 void fast_sort(vector<int> &v);
 void heap_sort(vector<int> &v);
 void selection_sort(vector<int> &v);
+void bubble_sort(vector<int> &v);
+void shell_sort(vector<int> &v);
 
 /* Search */
 int binarySearch(const vector<int> &v, int target);

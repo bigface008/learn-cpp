@@ -21,8 +21,10 @@ int main()
     // const vector<int> b{-1, 0, 2, 4, 6, 8, 10};
     // printVec(merge_vec(a, b));
     vector<int> v{17, 3, 4, 2, 88, -12, -2, -4, 21, 11, 9};
+    // vector<int> v;
     // selection_sort(v);
     insertion_sort(v);
+    // bubble_sort(v);
     printVec(v);
     return 0;
 }
