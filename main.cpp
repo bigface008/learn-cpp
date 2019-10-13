@@ -20,7 +20,7 @@ int main()
     // const vector<int> a{1, 3, 5, 7, 9, 22, 33};
     // const vector<int> b{-1, 0, 2, 4, 6, 8, 10};
     // printVec(merge_vec(a, b));
-    vector<int> v{17, 3, 4, 2, 88, -12, -2, -4, 21, 11, 9, 91, -111, 0, 5};
+    vector<int> v{17, 3, 4, 2, 88, -12, -2, 21, 11, 9, 91, -111, 0, 5};
     printVec(v);
     // vector<int> v;
     // selection_sort(v);

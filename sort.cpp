@@ -135,25 +135,13 @@ void _merge_vec(vector<int> &v, int low, int mid, int high)
     for (size_t k = low; k <= high; ++k)
     {
         if (i > mid)
-        {
-            v[k] = tmp[j - low];
-            ++j;
-        }
+            v[k] = tmp[j++ - low];
         else if (j > high)
-        {
-            v[k] = tmp[i - low];
-            ++i;
-        }
+            v[k] = tmp[i++ - low];
         else if (tmp[i - low] <= tmp[j - low])
-        {
-            v[k] = tmp[i - low];
-            ++i;
-        }
+            v[k] = tmp[i++ - low];
         else
-        {
-            v[k] = tmp[j - low];
-            ++j;
-        }
+            v[k] = tmp[j++ - low];
     }
 }
 
