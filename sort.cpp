@@ -31,18 +31,6 @@ void merge_sort(vector<int> &v)
 
 void insertion_sort(vector<int> &v)
 {
-    // size_t vsize = v.size();
-    // for (int i = 1; i < vsize; ++i)
-    // {
-    //     int x = v[i];
-    //     int j = i - 1;
-    //     while (j >= 0 && v[j] > x)
-    //     {
-    //         v[j + 1] = v[j];
-    //         --j;
-    //     }
-    //     v[j + 1] = x;
-    // }
     size_t vsize = v.size();
     for (size_t i = 1; i < vsize; i++)
     {
@@ -130,7 +118,6 @@ void shell_sort(vector<int> &v)
 void heap_sort(vector<int> &v)
 {
     _make_heap(v);
-    cout << "----------------------------------" << endl;
     for (int i = v.size() - 1; i >= 1; --i)
     {
         swap(v[0], v[i]);
@@ -140,7 +127,7 @@ void heap_sort(vector<int> &v)
 
 void _merge_vec(vector<int> &v, int low, int mid, int high)
 {
-    int i = low, j = high;
+    int i = low, j = mid + 1;
     vector<int> tmp;
     for (size_t k = low; k <= high; ++k)
         tmp.push_back(v[k]);
@@ -148,13 +135,25 @@ void _merge_vec(vector<int> &v, int low, int mid, int high)
     for (size_t k = low; k <= high; ++k)
     {
         if (i > mid)
-            v[k] = tmp[j++ - low];
+        {
+            v[k] = tmp[j - low];
+            ++j;
+        }
         else if (j > high)
-            v[k] = tmp[i++ - low];
-        else if (v[i] <= v[j])
-            v[k] = tmp[i++ - low];
+        {
+            v[k] = tmp[i - low];
+            ++i;
+        }
+        else if (tmp[i - low] <= tmp[j - low])
+        {
+            v[k] = tmp[i - low];
+            ++i;
+        }
         else
-            v[k] = tmp[j++ - low];
+        {
+            v[k] = tmp[j - low];
+            ++j;
+        }
     }
 }
 
@@ -180,38 +179,26 @@ int _fast_sort_split(vector<int> &v, int lo, int hi)
 void _make_heap(vector<int> &v)
 {
     size_t sz = v.size();
-    cout << "> _make_heap: v.size() = " << v.size() << endl;
     for (int i = sz / 2; i >= 0; --i)
         _sift_down(v, sz, i);
-    printVec(v);
-    cout << "< _make_heap" << endl;
 }
 
 void _sift_down(vector<int> &v, int end, int t)
 {
     bool done = false;
-    cout << "> _sift_down: i = " << t << "; end = " << end << endl;
-    cout << "    before";
-    printVec(v);
     if (2 * t + 1 > end - 1)
         return;
 
     int i = t;
     do
     {
-        // cout << "     > start loop i = " << i << endl;
         i = 2 * i + 1;
         if (i < end - 1 && v[i + 1] > v[i])
             ++i;
 
-        // cout << "     step i = " << i << endl;
         if (v[(i - 1) / 2] < v[i])
             swap(v[i], v[(i - 1) / 2]);
         else
             done = true;
-        // cout << "     < end loop" << endl;
-    } while (!(2 * i > end || done));
-    cout << "    after";
-    printVec(v);
-    cout << "< _sift_down" << endl;
+    } while (!(2 * i + 1 > end || done));
 }
