@@ -31,6 +31,5 @@ void shell_sort(vector<int> &v);
 int binarySearch(const vector<int> &v, int target);
 
 /* Other */
-const vector<int> merge_vec(const vector<int> &a, const vector<int> &b);
 
 #endif

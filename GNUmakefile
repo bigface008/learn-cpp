@@ -1,5 +1,5 @@
-app: main.o search.o sort.o common.o backpack.o other.o
-	g++ --std=c++11 -o app main.o search.o sort.o common.o backpack.o other.o
+app: main.o search.o sort.o common.o backpack.o
+	g++ --std=c++11 -o app main.o search.o sort.o common.o backpack.o
 
 main.o: main.cpp utils.hpp
 	g++ -c --std=c++11 main.cpp
@@ -15,9 +15,6 @@ common.o: common.cpp utils.hpp
 
 backpack.o: problems/backpack.cpp problems/backpack.hpp
 	g++ -c --std=c++11 problems/backpack.cpp
-
-other.o: other.cpp utils.hpp
-	g++ -c --std=c++11 other.cpp
 
 run: app
 	./app < input.txt
